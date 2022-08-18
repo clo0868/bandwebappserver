@@ -16,19 +16,7 @@ function hash(string) {
 console.log("i am listening");
 var server = http.createServer(app)
 server.listen(process.env.PORT || 3000)
-var con = mysql.createConnection({
-    //host: "mysqlforest.hosts.net.nz",
-    //user: "stacd342_user",
-    //password: "@gidnUp4",
-    //database: "stacd342_bandwebapp"
-    host: 'localhost',
-    user:'root',
-    password:'',
-    database:'pipe_band_app'
-});
-con.connect(function(err) {
-	if (err) throw err
-});
+
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use((req, res, next) => {
