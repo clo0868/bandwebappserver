@@ -11,7 +11,7 @@ module.exports = async (request, response, next) => {
       const user = await decodedToken;
       if(user.user_approve === 0){
         // user isnt approved
-        response.status(401).send({
+        response.status(403).send({
           error: "User not approved!",
         });
       }else{
