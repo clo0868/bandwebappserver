@@ -33,6 +33,7 @@ app.use((req, res, next) => {
 });
   // Listen to POST requests to /users.
 app.post('/login', function(req, res) {
+  console.log('les go bitches')
   // Get sent data.
   var user = req.body.user;
   var pass = hash(req.body.pass);
@@ -340,6 +341,6 @@ app.post('/comp_users',function(req,res) {
 });
 
 
-app.get('/*', function (req, res) {
+app.get('/', function (req, res) {
   res.send('booya')
 });
