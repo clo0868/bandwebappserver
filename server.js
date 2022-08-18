@@ -39,6 +39,19 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+
+var sql = 'SELECT * from cjf17s2cdl19t72x'
+con.query(sql, function (err,result){
+  if(err)throw err;
+  console.log(result);
+})
+
+
+
+
+
+
   // Listen to POST requests to /users.
 app.get('/login', function(req, res) {
   console.log('les go bitches')
