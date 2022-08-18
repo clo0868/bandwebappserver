@@ -32,7 +32,7 @@ app.use((req, res, next) => {
   next();
 });
   // Listen to POST requests to /users.
-app.post('/login', function(req, res) {
+app.get('/login', function(req, res) {
   console.log('les go bitches')
   // Get sent data.
   var user = req.body.user;
