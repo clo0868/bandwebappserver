@@ -351,13 +351,7 @@ app.post('/comp_users',function(req,res) {
   
 });
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, 'C:\\xampp\\htdocs\\Bandwebapp\\public\\index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-});
+
 //app.get('/*', function (req, res) {
   //res.sendFile(path.join(__dirname, 'build', 'index.html'));
 //});
