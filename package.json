@@ -1,0 +1,28 @@
+{
+  "name": "bandwebappserver",
+  "version": "1.0.0",
+  "description": "StAC pipe band server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clo0868/bandwebappserver.git"
+  },
+  "author": "Callum Lockhart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clo0868/bandwebappserver/issues"
+  },
+  "homepage": "https://github.com/clo0868/bandwebappserver#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1"
+  },
+  "engines": {
+    "node": "16.15.0"
+  }
+}
