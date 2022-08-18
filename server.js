@@ -55,7 +55,7 @@ con.query(sql, function (err,result){
 
 
   // Listen to POST requests to /users.
-app.get('/login', function(req, res) {
+app.post('/login', function(req, res) {
   console.log('les go bitches')
   // Get sent data.
   var user = req.body.user;
