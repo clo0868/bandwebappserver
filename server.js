@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var cors = require('cors');
 var express = require('express');
 var app = express()
 var http = require('http');
@@ -27,6 +28,7 @@ server.listen(process.env.PORT || 3000)
 
 app.set("view engine", "ejs");
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
