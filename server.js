@@ -4,7 +4,7 @@ var app = express()
 var http = require('http');
 var path = require('path');
 const { createHash } = require('crypto');
-const jwt = require("jsonwebtoken");no
+const jwt = require("jsonwebtoken");
 const auth = require("./auth");
 const create_schedule = require('./create_schedule');
 
@@ -15,7 +15,7 @@ function hash(string) {
 }
 console.log("i am listening");
 var server = http.createServer(app)
-server.listen(process.env.PORT || 3001)
+server.listen(process.env.PORT || 3000)
 var con = mysql.createConnection({
     //host: "mysqlforest.hosts.net.nz",
     //user: "stacd342_user",
