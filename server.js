@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 });
 
 
-var sql = 'SELECT table_name from dba_tables'
+var sql = 'SHOW TABLES'
 con.query(sql, function (err,result){
   if(err)throw err;
   console.log(result);
