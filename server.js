@@ -9,7 +9,15 @@ const auth = require("./auth");
 const create_schedule = require('./create_schedule');
 
 //app.use(express.static(path.join(__dirname, 'build')));
-
+var con = mysql.createConnection({
+  host: 'cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  user:'mkyfhek53nw7gqgz',
+  password:'oodr7klimw8gakj7',
+  database:'cjf17s2cdl19t72x'
+});
+con.connect(function(err) {
+if (err) throw err
+});
 function hash(string) {
   return createHash('sha256').update(string).digest('hex');
 }
