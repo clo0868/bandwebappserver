@@ -43,20 +43,10 @@ app.use((req, res, next) => {
 });
 
 
-var sql = 'SHOW TABLES'
-con.query(sql, function (err,result){
-  if(err)throw err;
-  console.log(result);
-})
-
-
-
-
 
 
   // Listen to POST requests to /users.
 app.post('/login', function(req, res) {
-  res.send("great stuff")
   // Get sent data.
   var user = req.body.user;
   var pass = hash(req.body.pass);
