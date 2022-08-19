@@ -94,7 +94,7 @@ app.post('/signup', function(req, res) {
   }else{
     var approve = 1
   }
-  var sql = 'INSERT INTO users (user,user_pass,user_type,email,first_name,last_name,user_approve) VALUES (?,?,?,?,?,?,?)';
+  var sql = 'INSERT INTO users (user,user_pass,user_type,email,first_name,last_name,user_approve,parent) VALUES (?,?,?,?,?,?,?,0)';
   con.query(sql, [user,pass,type,email,firstname,lastname,approve], function (err, result) {
     if (err) throw err;
     var sql = 'SELECT * FROM users WHERE user = ? AND user_pass = ?'
