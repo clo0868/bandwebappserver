@@ -121,7 +121,7 @@ function create_schedule(comp,entries){
             }catch(err){
                 //console.log(err.length);
                 
-                //console.log(user_list);
+                console.log(user_list);
                 //console.log(err.map((v)=>{console.log(v);}))
                 return err
             }
