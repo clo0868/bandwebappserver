@@ -286,7 +286,7 @@ app.post('/reset_rooms',auth, function(req, res) {
     res.send(r);
   });
 });
-app.post('/officals',auth, function(req, res) {
+app.post('/officials',auth, function(req, res) {
   var sql = 'SELECT * FROM users WHERE user_type = 4';
   con.query(sql, function (err, steward) {
     if (err) throw err;
