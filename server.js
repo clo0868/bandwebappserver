@@ -368,6 +368,15 @@ app.post('/approve_user',auth, function(req, res) {
     res.send(result);
   });
 });
+app.post('/seen_approve_notif',auth, function(req, res) {
+  const user = req.body.user
+  const seen_by = req.user
+  var sql = 'UPDATE notifications SET seen = 1 WHERE userID = ? AND by_userID = ?';
+  con.query(sql,[seen_by.userID,user.userID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+  });
+});
 
 app.get('/', function (req, res) {
   res.send('<this is not the droid you are looking for>')
