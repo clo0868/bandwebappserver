@@ -360,7 +360,14 @@ app.post('/approve_notif',auth, function(req, res) {
     res.end();
   });
 });
-
+app.post('/approve_user',auth, function(req, res) {
+  const userID = req.body.userID
+  var sql = 'UPDATE user SET user_approve = 1 WHERE userID = ? ';
+  con.query(sql,[userID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+  });
+});
 
 app.get('/', function (req, res) {
   res.send('<this is not the droid you are looking for>')
