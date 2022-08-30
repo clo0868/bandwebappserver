@@ -362,7 +362,7 @@ app.post('/approve_notif',auth, function(req, res) {
 });
 app.post('/approve_user',auth, function(req, res) {
   const userID = req.body.userID
-  var sql = 'UPDATE user SET user_approve = 1 WHERE userID = ? ';
+  var sql = 'UPDATE users SET user_approve = 1 WHERE userID = ? ';
   con.query(sql,[userID], function (err, result) {
     if (err) throw err;
     res.send(result);
