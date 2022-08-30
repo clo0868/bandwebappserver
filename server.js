@@ -286,11 +286,11 @@ app.post('/reset_rooms',auth, function(req, res) {
     res.send(r);
   });
 });
-app.post('/offical_names',auth, function(req, res) {
-  var sql = 'SELECT first_name,last_name,userID FROM users WHERE user_type = 4';
+app.post('/officals',auth, function(req, res) {
+  var sql = 'SELECT * FROM users WHERE user_type = 4';
   con.query(sql, function (err, steward) {
     if (err) throw err;
-    var sql = 'SELECT first_name,last_name,userID FROM users WHERE user_type = 5';
+    var sql = 'SELECT * FROM users WHERE user_type = 5';
     con.query(sql, function (err, judge) {
       if (err) throw err;
       var multires = {steward,judge}
@@ -344,5 +344,5 @@ app.post('/comp_users',function(req,res) {
 
 
 app.get('/', function (req, res) {
-  res.send('booya')
+  res.send('<this is not the droid you are looking for>')
 });
