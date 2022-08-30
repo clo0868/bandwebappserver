@@ -111,9 +111,19 @@ app.post('/signup', function(req, res) {
             if (err) throw err;
           });
           
-        }
-        
+        }       
 
+      }
+      if(result[0].user_type === 5 || result[0].user_type === 4){
+        var sql = 'SELECT userID FROM users WHERE user_type = 4 AND user_approve = 1 OR user_type = 5 AND user_approve = 1'
+        con.query(sql, function (err, accounts) {
+          if (err) throw err;
+          var sql = 'INSERT INTO notifications (notif_type,userID,by_userID,seen) VALUES ?'
+          con.query(sql,[accounts.map(account => [1,account.userID,result[0].userID,0])] ,function (err, result) {
+            if (err) throw err;
+            console.log(result);
+          });
+        });
       }
       const token = jwt.sign(
         {
