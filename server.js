@@ -351,6 +351,15 @@ app.post('/comp_users',function(req,res) {
   });
   
 });
+app.post('/approve_notif',auth, function(req, res) {
+  const user = req.body.user;
+  var sql = 'SELECT * FROM notifications WHERE userID = ? AND seen = 0';
+  con.query(sql,[user.userID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
 
 
 app.get('/', function (req, res) {
