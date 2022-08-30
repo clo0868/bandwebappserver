@@ -385,6 +385,25 @@ app.post('/delete_approve_notif',auth, function(req, res) {
     res.send(result);
   });
 });
+app.post('/delete_user_entries',auth, function(req, res) {
+  var user = req.body.user;
+  var comp = req.body.comp;
+  var sql = 'DELETE FROM entries WHERE compID = ? AND userID = ?';
+  con.query(sql,[comp.compID,user.userID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
+app.post('/delete_entry',auth, function(req, res) {
+  var entry = req.body.entry;
+  var sql = 'DELETE FROM entries WHERE entryID = ?';
+  con.query(sql,[entry.entryID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
 
 app.get('/', function (req, res) {
   res.send('<this is not the droid you are looking for>')
