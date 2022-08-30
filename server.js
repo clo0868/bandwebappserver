@@ -309,7 +309,7 @@ app.post('/officials',auth, function(req, res) {
     });
   });
 });
-app.post('/create_schedule', function(req, res) {
+app.post('/create_schedule',auth, function(req, res) {
   const compID = req.body.compID;
   var sql = 'SELECT * FROM entries WHERE compID = ?';
   con.query(sql,[compID], function (err, entries) {
@@ -336,7 +336,7 @@ app.post('/create_schedule', function(req, res) {
     });  
   });
 });
-app.post('/comp_users',function(req,res) {
+app.post('/comp_users',auth,function(req,res) {
   const compID = req.body.compID
   var sql = 'SELECT * FROM entries WHERE compID = ? ';
   con.query(sql,[compID], function (err, result) {
@@ -373,6 +373,14 @@ app.post('/seen_approve_notif',auth, function(req, res) {
   const seen_by = req.user
   var sql = 'UPDATE notifications SET seen = 1 WHERE userID = ? AND by_userID = ?';
   con.query(sql,[seen_by.userID,user.userID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+app.post('/delete_approve_notif',auth, function(req, res) {
+  var user = req.body.user;
+  var sql = 'DELETE FROM notifications WHERE by_userID = ?';
+  con.query(sql,[user.userID], function (err, result) {
     if (err) throw err;
     res.send(result);
   });
