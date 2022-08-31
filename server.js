@@ -247,7 +247,7 @@ app.post('/create_entries',auth, function(req, res) {
       con.query(sql,[user,compID,comp_events[entry_indicies[i]].grade,comp_events[entry_indicies[i]].event], function (err, result) {
         if (err) throw err;
         if(i===entry_indicies.length-1){
-          var sql = 'SELECT * FROM entries WHERE userID = ? AND compID = ?';
+          var sql = 'SELECT * FROM entries INNER JOIN users ON entries.userID = users.userID WHERE entries.userID = ? AND entries.compID = ?';
           con.query(sql,[user,compID], function (err, result) {
             if (err) throw err;
             res.status(201).send({
