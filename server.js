@@ -412,6 +412,15 @@ app.post('/delete_entry',auth, function(req, res) {
     res.end();
   });
 });
+app.post('/non_admin_users',auth, function(req, res) {
+  const user = req.user;
+  var sql = 'SELECT * FROM users WHERE user_type IN (?)';
+  con.query(sql,[[0,2,3]], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
 
 app.get('/', function (req, res) {
   res.send('<this is not the droid you are looking for>')
