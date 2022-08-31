@@ -247,10 +247,18 @@ app.post('/create_entries',auth, function(req, res) {
       con.query(sql,[user,compID,comp_events[entry_indicies[i]].grade,comp_events[entry_indicies[i]].event], function (err, result) {
         if (err) throw err;
         if(i===entry_indicies.length-1){
-          res.status(201).send({
-            message:"entered successfully",
-            result: result,
-          })
+          var sql = 'SELECT * FROM entries WHERE userID = ? AND compID = ?';
+          con.query(sql,[user,compID], function (err, result) {
+            if (err) throw err;
+            res.status(201).send({
+              message:"entered successfully",
+              result: result,
+            })
+          });
+
+
+
+          
         }
       });
     }
