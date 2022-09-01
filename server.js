@@ -81,14 +81,10 @@ app.post('/signup', function(req, res) {
   const pass = hash(req.body.pass);
   const type = req.body.type;
   const email = req.body.email;
-  const student = req.body.student
-  if(type == '2'){
-    var firstname = ''
-    var lastname = ''
-  }else{
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-  }
+  
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+  
   if(type === '3'|| type === '4'|| type === '5'){
     var approve = 0
   }else{
@@ -100,20 +96,6 @@ app.post('/signup', function(req, res) {
     var sql = 'SELECT * FROM users WHERE user = ? AND user_pass = ?'
     con.query(sql, [user, pass], function (err, result) {
       if (err) throw err;
-      if(result[0].user_type === 2){
-        console.log(student);
-        for (let i = 0; i < student.length; i++) {
-          console.log(i);
-          console.log(student);
-          console.log(result);
-          var sql = 'UPDATE users SET parent = ? WHERE userID = ? ';
-          con.query(sql,[result[0].userID,student[i]], function (err, r) {
-            if (err) throw err;
-          });
-          
-        }       
-
-      }
       if(result[0].user_type === 5 || result[0].user_type === 4){
         var sql = 'SELECT userID FROM users WHERE user_type = 4 AND user_approve = 1 OR user_type = 5 AND user_approve = 1'
         con.query(sql, function (err, accounts) {
