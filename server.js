@@ -270,7 +270,7 @@ app.post('/create_entries',auth, function(req, res) {
   
 });
 app.post('/get_existing_names', function(req, res) {
-  var sql = 'SELECT userID,first_name,last_name FROM users WHERE user_type = 0';
+  var sql = 'SELECT userID,first_name,last_name,parent FROM users WHERE user_type = 0';
   con.query(sql, function (err, result) {
     if (err) throw err;    
     res.send(result);
