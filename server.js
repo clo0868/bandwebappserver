@@ -129,6 +129,15 @@ app.post('/signup', function(req, res) {
     });
   })
 });
+app.post('/update_children',auth, function(req, res) {
+  const children = req.body.children 
+  const user = req.user
+  var sql = 'UPDATE users SET parent = ? WHERE userID IN (?) ';
+  con.query(sql,[user.userID,children], function (err, r) {
+    if (err) throw err;
+    res.send(r);
+  });
+});
 app.post('/all_comp_data', auth, function(req, res) {
   var sql = 'SELECT * FROM competitions';
   con.query(sql, function (err, result) {
