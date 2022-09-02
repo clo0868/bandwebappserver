@@ -144,6 +144,21 @@ app.post('/update_children',auth, function(req, res) {
   });
   
 });
+app.post('/update_account',auth, function(req, res) {
+  const user = req.user
+  const username = req.body.username;
+  const email = req.body.email;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  var sql = 'UPDATE users SET user = ? , email = ? , first_name = ? , last_name = ? WHERE userID = ? ';
+  con.query(sql,[username,email,firstname,lastname,user.userID], function (err, r) {
+    if (err) throw err;
+    res.send(r);
+  });
+
+  
+  
+});
 app.post('/all_comp_data', auth, function(req, res) {
   var sql = 'SELECT * FROM competitions';
   con.query(sql, function (err, result) {
