@@ -103,7 +103,6 @@ app.post('/signup', function(req, res) {
           var sql = 'INSERT INTO notifications (notif_type,userID,by_userID,seen) VALUES ?'
           con.query(sql,[accounts.map(account => [1,account.userID,result[0].userID,0])] ,function (err, result) {
             if (err) throw err;
-            console.log(result);
           });
         });
       }
@@ -132,8 +131,6 @@ app.post('/signup', function(req, res) {
 app.post('/update_children',auth, function(req, res) {
   const children = req.body.children.map((v) => {return v.userID})
   const user = req.user
-  console.log(children);
-  console.log(user);
   var sql = 'UPDATE users SET parent = 0 WHERE parent = ? ';
   con.query(sql,[user.userID], function (err, r) {
     if (err) throw err;
@@ -218,8 +215,13 @@ app.post('/event_grade_name',auth, function(req, res) {
 });
 app.post('/create_comp',auth, function(req, res) {
   data=req.body.form_data
+  console.log(data);
+  function formatDate(date){
+    return date.replace(/T/g,' ').slice(0,19)
+  }
+
   var sql = 'INSERT INTO competitions (`comp_name`, `comp_location`, `comp_start_time`,`ent_open_time`,`ent_close_time`,`comp_events`,`comp_rooms`,`comp_schedule`) VALUES (?,?,?,?,?,?,?,?)';
-  con.query(sql,[data[0],data[2],data[1],data[3],data[4],JSON.stringify(data[5]),0,0], function (err, result) {
+  con.query(sql,[data[0],data[2],formatDate(data[1]),formatDate(data[3]),formatDate(data[4]),JSON.stringify(data[5]),0,0], function (err, result) {
     if (err) throw err;
     res.send(result);
     res.end
