@@ -243,6 +243,15 @@ app.post('/delete_comp',auth, function(req, res) {
     res.end();
   });
 });
+app.post('/clear',auth, function(req, res) {
+  var compID = req.body.compID;
+  var sql = 'DELETE FROM users WHERE user_type = 0 OR WHERE user_type = 2';
+  con.query(sql,[compID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
 app.post('/create_entries',auth, function(req, res) {
   var entry_input = []
   const user = req.body.user
