@@ -130,7 +130,7 @@ app.post('/signup', function(req, res) {
   })
 });
 app.post('/update_children',auth, function(req, res) {
-  const children = req.body.children 
+  const children = req.body.children.map((v) => {return v.userID})
   const user = req.user
   var sql = 'UPDATE users SET parent = 0 WHERE parent = ? ';
   con.query(sql,[user.userID], function (err, r) {
