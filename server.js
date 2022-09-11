@@ -54,8 +54,7 @@ app.post('/login', function(req, res) {
             userID: result[0].userID,
             user: result[0].user,
             user_type: result[0].user_type,
-            first_name: result[0].first_name,
-            last_name: result[0].last_name,
+            user_name: result[0].user_name,
             email:result[0].email,
             user_approve:result[0].user_approve,
           },
@@ -82,16 +81,15 @@ app.post('/signup', function(req, res) {
   const type = req.body.type;
   const email = req.body.email;
   
-  var firstname = req.body.firstname;
-  var lastname = req.body.lastname;
+  var name = req.body.name;
   
   if(type === '3'|| type === '4'|| type === '5'){
     var approve = 0
   }else{
     var approve = 1
   }
-  var sql = 'INSERT INTO users (user,user_pass,user_type,email,first_name,last_name,user_approve,parent) VALUES (?,?,?,?,?,?,?,0)';
-  con.query(sql, [user,pass,type,email,firstname,lastname,approve], function (err, result) {
+  var sql = 'INSERT INTO users (user,user_pass,user_type,email,user_name,user_approve,parent) VALUES (?,?,?,?,?,?,?,0)';
+  con.query(sql, [user,pass,type,email,name,approve], function (err, result) {
     if (err) throw err;
     var sql = 'SELECT * FROM users WHERE user = ? AND user_pass = ?'
     con.query(sql, [user, pass], function (err, result) {
@@ -111,8 +109,7 @@ app.post('/signup', function(req, res) {
           userID: result[0].userID,
           user: result[0].user,
           user_type: result[0].user_type,
-          first_name: result[0].first_name,
-          last_name: result[0].last_name,
+          user_name: result[0].user_name,
           email:result[0].email,
           user_approve:result[0].user_approve,
         },
@@ -147,10 +144,9 @@ app.post('/update_account',auth, function(req, res) {
   const user = req.user
   const username = req.body.username;
   const email = req.body.email;
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  var sql = 'UPDATE users SET user = ? , email = ? , first_name = ? , last_name = ? WHERE userID = ? ';
-  con.query(sql,[username,email,firstname,lastname,user.userID], function (err, r) {
+  const name = req.body.name;
+  var sql = 'UPDATE users SET user = ? , email = ? , user_name = ? WHERE userID = ? ';
+  con.query(sql,[username,email,name,user.userID], function (err, r) {
     if (err) throw err;
     res.send(r);
   });
@@ -295,7 +291,7 @@ app.post('/create_entries',auth, function(req, res) {
   
 });
 app.post('/get_existing_names', function(req, res) {
-  var sql = 'SELECT userID,first_name,last_name,parent FROM users WHERE user_type = 0';
+  var sql = 'SELECT userID,user_name,parent FROM users WHERE user_type = 0';
   con.query(sql, function (err, result) {
     if (err) throw err;    
     res.send(result);
