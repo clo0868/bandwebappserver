@@ -223,6 +223,19 @@ app.post('/create_comp',auth, function(req, res) {
     res.end
   });
 });
+app.post('/update_comp',auth, function(req, res) {
+  data=req.body.form_data
+  console.log(data);
+  function formatDate(date){
+    return date.replace(/T/g,' ').slice(0,19)
+  }
+  var sql = 'UPDATE competitions SET comp_name = ? ,  comp_location = ? , comp_start_time = ? , ent_open_time = ? , ent_close_time = ? , comp_events = ? WHERE compID = ?';
+  con.query(sql,[data[0],data[2],formatDate(data[1]),formatDate(data[3]),formatDate(data[4]),JSON.stringify(data[5]),data[6]], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end
+  });
+});
 app.post('/comp_entries',auth, function(req, res) {
   var comp_data = req.body.comp;
   var sql = 'SELECT * FROM entries INNER JOIN users ON entries.userID = users.userID WHERE entries.compID = ?';
