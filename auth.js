@@ -25,6 +25,7 @@ module.exports = async (request, response, next) => {
       
       
     } catch (error) {
+      //code will error if jwt.verify fails so catch and return error message 
       response.status(401).send({
         error:"Invalid request!",
       });

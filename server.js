@@ -34,7 +34,7 @@ app.use(cors());
 
 
 
-  // Listen to POST requests to /users.
+  // Listen to POST requests to /
 app.post('/login', function(req, res) {
   // Get sent data.
   var user = req.body.user;
@@ -125,6 +125,19 @@ app.post('/signup', function(req, res) {
     });
   })
 });
+app.post('/comp_data', auth, function(req, res) {
+  const compID = req.body.compID
+  var sql = 'SELECT * FROM competitions WHERE compID = ?';
+  con.query(sql,[compID], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+    res.end();
+  });
+});
+
+
+
+
 app.post('/update_children',auth, function(req, res) {
   const children = req.body.children.map((v) => {return v.userID})
   const user = req.user
@@ -162,15 +175,7 @@ app.post('/all_comp_data', auth, function(req, res) {
     res.end();
   });
 });
-app.post('/comp_data', auth, function(req, res) {
-  const compID = req.body.compID
-  var sql = 'SELECT * FROM competitions WHERE compID = ?';
-  con.query(sql,[compID], function (err, result) {
-    if (err) throw err;
-    res.send(result);
-    res.end();
-  });
-});
+
 app.post('/check_existing_user', function(req, res) {
   var user = req.body.user;
   var sql = 'SELECT * FROM users WHERE user = ?';
