@@ -1,3 +1,5 @@
+//unused perm function 
+
 var results = [];
 const inputArr = [1,2,3,4] 
 

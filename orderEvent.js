@@ -1,4 +1,4 @@
-
+//unused function 
 
 async function create_schedule(comp,entries){
     console.log('launch');
