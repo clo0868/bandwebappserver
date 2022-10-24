@@ -191,9 +191,19 @@ function create_schedule(comp,entries){
                 //so that the second element will end up at every position not taken by the first element 
                 for (var i = 0; i < arr.length; i++) {
                    
+                    //check if failed index is above or below this
+                    if (memo.length > skip) {
+                        //if index is above skip through perms by setting i to >= arr.length 
+                        i = arr.length
+                    }else{
                     
+                    //if failed index above or equal to this pivot index
+
+                    //reset skip as new perms used 
+                    skip = undefined
                     //take off the first element of the array 
                     cur = arr.splice(i, 1);
+                    //console.log(arr.length,memo.length);
 
                     //if it took off the last element then a permutation has been found 
                     if (arr.length === 0) {
@@ -205,6 +215,7 @@ function create_schedule(comp,entries){
                         try {
                             //order is given by the permutation 
                             const order = memo.concat(cur)
+
                             //checks if any user is at a time that has already been checked 
                             const already_been_checked = cannot_play.filter((v) => {
 
@@ -283,7 +294,7 @@ function create_schedule(comp,entries){
                     //by reversing the direction in different layers 
                     arr.splice(i, 0, cur[0]);
                     
-                    
+                    }
                     
                 }
             }
@@ -302,7 +313,6 @@ function create_schedule(comp,entries){
                 //if event is thrown out of permute
                 //then event has been ordered succesfully 
                 //returns sorted event to the room sort function
-                console.log('good event');
                 return err
             }
             
@@ -315,7 +325,7 @@ function create_schedule(comp,entries){
             //same as cannot play 
             //but stored with specific start time instead of index due to different lengths of events 
             var cannot_event = []
-
+            var skip_event
 
             //function for finding all possible ways to arrange events within a room 
             function permute(arr,delay,memo) {
@@ -329,6 +339,11 @@ function create_schedule(comp,entries){
                 //just rotates the current pivot through the array 
                 for (var i = 0; i < arr.length; i++) {
                 
+                    if (memo.length > skip_event) {
+                        i = arr.length
+                    }else{
+                    
+                    skip_event = undefined
                     //take off first element in array
                     cur = arr.splice(i, 1);
 
@@ -379,7 +394,8 @@ function create_schedule(comp,entries){
                                     }                   
                                 }else{
                                     //if event wasnt ordered add to couldnt event array
-                                    //along with the start time of that event  
+                                    //along with the start time of that event 
+                                    skip_event = event_index 
                                     cannot_event.push({event,start_time})
                                     throw('skip')
                                 }
@@ -403,6 +419,7 @@ function create_schedule(comp,entries){
 
                     //push pivot entry back in with others in opposite direction 
                     arr.splice(i, 0, cur[0]);
+                }
                 }
             }
             
