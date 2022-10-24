@@ -164,7 +164,7 @@ function create_schedule(comp,entries){
     
             return user.play_times.map((user_play_time) =>{ 
                 //check if given play time is within 5 minutes of another playing time of theirs
-                return (play_time <= (user_play_time - 10)|| play_time >= (user_play_time + 10))
+                return (play_time <= (user_play_time - 15)|| play_time >= (user_play_time + 15))
     
                 //if any values return false user cannot play at that time 
             }).every((value) => (value === true))
@@ -173,7 +173,7 @@ function create_schedule(comp,entries){
     
     
         function orderEvent(entries,start_time,user_list){
-            
+            var skip
             //initiate cannot play array 
             var cannot_play = []
             //function creating permutations of the entries in an event
@@ -190,14 +190,14 @@ function create_schedule(comp,entries){
                 //on a reccuring step it takes the next element as the first has already been removed and repeats
                 //so that the second element will end up at every position not taken by the first element 
                 for (var i = 0; i < arr.length; i++) {
-                
+                   
+                    
                     //take off the first element of the array 
                     cur = arr.splice(i, 1);
-                    console.log(arr.length,memo.length);
 
                     //if it took off the last element then a permutation has been found 
                     if (arr.length === 0) {
-                        console.log('try');
+                        
                         
 
                         //new permutation is here 
@@ -205,7 +205,6 @@ function create_schedule(comp,entries){
                         try {
                             //order is given by the permutation 
                             const order = memo.concat(cur)
-
                             //checks if any user is at a time that has already been checked 
                             const already_been_checked = cannot_play.filter((v) => {
 
@@ -252,7 +251,7 @@ function create_schedule(comp,entries){
                                         }else{
                                             //if the user cant play add it to the cannot play array with the index
                                             //skip the remainder of the perm as it already cant occur 
-
+                                            skip = entry_index
                                             cannot_play.push({userID:user.userID,perm_index:entry_index})
                                             throw('skip')
                                         }
@@ -283,6 +282,9 @@ function create_schedule(comp,entries){
                     //this is how it ends up in every other position 
                     //by reversing the direction in different layers 
                     arr.splice(i, 0, cur[0]);
+                    
+                    
+                    
                 }
             }
 
@@ -300,6 +302,7 @@ function create_schedule(comp,entries){
                 //if event is thrown out of permute
                 //then event has been ordered succesfully 
                 //returns sorted event to the room sort function
+                console.log('good event');
                 return err
             }
             
@@ -372,7 +375,7 @@ function create_schedule(comp,entries){
                                     //if all rooms are add throw room object out of loop 
                                     if (return_room.length === order.length) {
                                         cannot_event  = []
-                                        throw {return_room,delay,finish_time:return_room.reduce((t,v) => {return t+v.time},0)-5}
+                                        throw {return_room,delay,finish_time:return_room.reduce((t,v) => {return t+v.time},0)-5+delay}
                                     }                   
                                 }else{
                                     //if event wasnt ordered add to couldnt event array
@@ -410,7 +413,7 @@ function create_schedule(comp,entries){
             
             //returns finish time of the room
             const finish_time = room.reduce((t,v) => {return t+v.time},0)
-            console.log(finish_time);
+            //console.log(finish_time);
             //calculates any float time avalible for non critical rooms 
             const float_time = max_time-finish_time
             var delay = 0

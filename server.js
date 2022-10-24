@@ -178,7 +178,8 @@ app.post('/comp_data', auth, function(req, res) {
 app.post('/update_children',auth, function(req, res) {
   //changes linked student accounts 
   
-  //returns list of new student user ids 
+  //returns list of new student user ids
+  console.log(req.body.children); 
   const children = req.body.children.map((v) => {return v.userID})
   const user = req.user
 
