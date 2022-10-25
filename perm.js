@@ -164,7 +164,7 @@ function create_schedule(comp,entries){
     
             return user.play_times.map((user_play_time) =>{ 
                 //check if given play time is within 5 minutes of another playing time of theirs
-                return (play_time <= (user_play_time - 15)|| play_time >= (user_play_time + 15))
+                return (play_time <= (user_play_time - 20)|| play_time >= (user_play_time + 20))
     
                 //if any values return false user cannot play at that time 
             }).every((value) => (value === true))
@@ -200,7 +200,7 @@ function create_schedule(comp,entries){
                     //if failed index above or equal to this pivot index
 
                     //reset skip as new perms used 
-                    skip = undefined
+                   // skip = undefined
                     //take off the first element of the array 
                     cur = arr.splice(i, 1);
                     //console.log(arr.length,memo.length);
@@ -529,7 +529,7 @@ function create_schedule(comp,entries){
 
     //end of algorithm time
     var over_end_time = process.hrtime(over_start_time);
-
+    console.log(over_end_time[0] * 1000 + over_end_time[1] / 1000000);
     console.log(schedule);
     return schedule
 }

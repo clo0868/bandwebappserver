@@ -35,7 +35,7 @@ var server = http.createServer(app)
 server.listen(process.env.PORT || 3000)
 
 //cors options 
-app.options('*', cors())
+//app.options('*', cors())
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(cors());
