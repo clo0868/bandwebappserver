@@ -34,10 +34,16 @@ console.log("i am listening");
 var server = http.createServer(app)
 const { Server } = require("socket.io");
 const io = new Server(server);
+
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
+
 server.listen(process.env.PORT || 3000)
 
 //cors options 
-//app.options('*', cors())
+app.options('*', cors())
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(cors());
@@ -577,6 +583,4 @@ app.get('/', function (req, res) {
   //pages should load generic error 
   res.send('<this is not the droid you are looking for>')
 });
-io.on('connection', (socket) => {
-  console.log('a user connected');
-});
+
