@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
   console.log("New client connected");
   
   socket.on("update_ping", (userID, callback) => {
-    console.log(arg1); 
+    
     callback({
       socket: socket.id,
       userID:userID
