@@ -43,9 +43,8 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("New client connected");
   
-  socket.on("update_ping", (arg1, arg2, callback) => {
+  socket.on("update_ping", (arg1, callback) => {
     console.log(arg1); 
-    console.log(arg2); 
     callback({
       status: "bing bong fuck ya life"
     });
