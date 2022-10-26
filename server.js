@@ -49,12 +49,13 @@ io.on("connection", (socket) => {
     var user = data.user;
     var socketID = data.socketID;
     var comp = data.comp
-    const room = JSON.parse(comp.comp_rooms).filter((room) => { return room.room_judge.userID === user.userID || room.room_steward.userID === user.userID})[0]
+    const room = JSON.parse(comp.comp_rooms).filter((room) => { return (room.room_judge.userID === user.userID || room.room_steward.userID === user.userID)})[0]
     users[user.userID] = {socketID:socketID,user_role:user_types[user.user_type],room:room.room_name};
     socket.join(room.room_name)
   });
 
   socket.on("send_to_room", (room,user,message) => {
+    console.log(room,user,message);
     io.to(room).emit('room_message',user,message)
   });
 
