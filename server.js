@@ -32,6 +32,8 @@ console.log("i am listening");
 
 //server setup 
 var server = http.createServer(app)
+const { Server } = require("socket.io");
+const io = new Server(server);
 server.listen(process.env.PORT || 3000)
 
 //cors options 
@@ -574,4 +576,7 @@ app.get('/', function (req, res) {
   //this is the error message if the api is found it will revert to /
   //pages should load generic error 
   res.send('<this is not the droid you are looking for>')
+});
+io.on('connection', (socket) => {
+  console.log('a user connected');
 });
