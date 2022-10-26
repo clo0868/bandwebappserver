@@ -39,28 +39,28 @@ const io = require("socket.io")(server, {
   }
 });
 
+var users = {};
 
 io.on("connection", (socket) => {
   console.log("New client connected");
   
-  socket.on("update_ping", (userID, callback) => {
-    callback({
-      socket: socket.id,
-      userID:userID
-    });
+  socket.on('new_connection' , function(data) {
+    const user_types = ['student','admin','parent','tutor','steward','judge']
+    var user = data.user;
+    var socketID = data.socketID;
+    var comp = data.comp
+    const room = JSON.parse(comp.comp_rooms).filter((room) => { return room.room_judge.userID === user.userID})[0]
+    users[user.userID] = {socketID:socketID,user_role:user_types[user.user_type],room:room.room_name};
+    socket.join(room.room_name)
   });
-  socket.on("judge_send", (userID,message) => {
-    console.log('judge'+userID+ 'sent'+message);
-    socket.emit(userID,message)
+
+  socket.on("send_to_room", (room,message) => {
+    io.to(room).emit('room_message',message)
   });
-  socket.on("steward_send", (userID,message) => {
-    console.log('judge'+userID+'sent'+message);
-    socket.emit(userID,message)
-  });
+
   
   socket.on("disconnect", () => {
     console.log("Client disconnected");
-    
   });
 });
 
