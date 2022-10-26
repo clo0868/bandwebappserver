@@ -44,11 +44,16 @@ io.on("connection", (socket) => {
   console.log("New client connected");
   
   socket.on("update_ping", (userID, callback) => {
-    
     callback({
       socket: socket.id,
       userID:userID
     });
+  });
+  socket.on("judge_send", (userID,message) => {
+    socket.emit(userID,message)
+  });
+  socket.on("steward_send", (userID,message) => {
+    socket.emit(userID,message)
   });
   
   socket.on("disconnect", () => {
