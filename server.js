@@ -50,9 +50,11 @@ io.on("connection", (socket) => {
     });
   });
   socket.on("judge_send", (userID,message) => {
+    console.log('judge'+userID+ 'sent'+message);
     socket.emit(userID,message)
   });
   socket.on("steward_send", (userID,message) => {
+    console.log('judge'+userID+'sent'+message);
     socket.emit(userID,message)
   });
   
