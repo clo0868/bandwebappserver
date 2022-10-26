@@ -32,8 +32,12 @@ console.log("i am listening");
 
 //server setup 
 var server = http.createServer(app)
-const { Server } = require("socket.io");
-const io = new Server(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*',
+    methods: ["GET", "POST"]
+  }
+});
 
 
 io.on('connection', (socket) => {
