@@ -39,25 +39,25 @@ const io = require("socket.io")(server, {
   }
 });
 
-let interval 
 
 io.on("connection", (socket) => {
   console.log("New client connected");
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
+  
+  socket.on("update_ping", (arg1, arg2, callback) => {
+    console.log(arg1); 
+    console.log(arg2); 
+    callback({
+      status: "bing bong fuck ya life"
+    });
+  });
+  
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);
   });
 });
 
-const getApiAndEmit = socket => {
-  const response = new Date();
-  // Emitting a new message. Will be consumed by the client
-  socket.emit("FromAPI", response);
-};
+
 
 server.listen(process.env.PORT || 3000)
 
