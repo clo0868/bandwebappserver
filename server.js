@@ -53,27 +53,21 @@ io.on("connection", (socket) => {
     console.log(room);
     users[user.userID] = {socketID:socketID,user_role:user_types[user.user_type],room:room.room_name};
     socket.join(room.room_name)
-
-
-
-
-
-    socket.on("send_to_room", (room,user,message) => {
-      console.log(room,user,message);
-      io.to(room).emit('room_message',user,message)
-    });
-    socket.on("entry_called", (room,entryID,called) => {
-      console.log(room,entryID,called);
-      io.in(room).emit('entry_called',entryID,called)
-    });
-    socket.on("entry_playing", (room,entryID,playing) => {
-      console.log(room,entryID,playing);
-      io.in(room).emit('entry_playing',entryID,playing)
-    });
-  
   });
 
-  
+  socket.on("send_to_room", (room,user,message) => {
+    console.log(room,user,message);
+    io.to(room).emit('room_message',user,message)
+  });
+  socket.on("entry_called", (room,entryID,called) => {
+    console.log(room,entryID,called);
+    io.to(room).emit('entry_called',entryID,called)
+  });
+  socket.on("entry_playing", (room,entryID,playing) => {
+    console.log(room,entryID,playing);
+    io.(rtooom).emit('entry_playing',entryID,playing)
+  });
+
   
   socket.on("disconnect", () => {
     console.log("Client disconnected");
