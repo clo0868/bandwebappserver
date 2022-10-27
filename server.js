@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
   });
   socket.on("entry_playing", (room,entryID,playing) => {
     console.log(room,entryID,playing);
-    io.(rtooom).emit('entry_playing',entryID,playing)
+    io.to(room).emit('entry_playing',entryID,playing)
   });
 
   
