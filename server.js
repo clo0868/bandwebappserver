@@ -60,12 +60,12 @@ io.on("connection", (socket) => {
     console.log(room,user,message);
     io.to(room).emit('room_message',user,message)
   });
-  socket.on("entry_called", (room,entryID,called) => {
+  socket.on("entry_called_check", (room,entryID,called) => {
     console.log(io.sockets.adapter.rooms.get(room));
     console.log(room,entryID,called);
     io.to(room).emit('entry_called',entryID,called)
   });
-  socket.on("entry_playing", (room,entryID,playing) => {
+  socket.on("entry_playing_check", (room,entryID,playing) => {
     console.log(io.sockets.adapter.rooms.get(room));
     console.log(room,entryID,playing);
     io.to(room).emit('entry_playing',entryID,playing)
