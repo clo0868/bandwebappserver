@@ -59,6 +59,14 @@ io.on("connection", (socket) => {
     console.log(room,user,message);
     io.to(room).emit('room_message',user,message)
   });
+  socket.on("entry_called", (room,entryID,called) => {
+    console.log(room,entryID,called);
+    io.to(room).emit('entry_called',entryID,called)
+  });
+  socket.on("entry_playing", (room,entryID,playing) => {
+    console.log(room,entryID,called);
+    io.to(room).emit('entry_playing',entryID,playing)
+  });
 
   
   socket.on("disconnect", () => {
