@@ -61,11 +61,11 @@ io.on("connection", (socket) => {
   });
   socket.on("entry_called", (room,entryID,called) => {
     console.log(room,entryID,called);
-    io.to(room).emit('entry_called',entryID,called)
+    io.in(room).emit('entry_called',entryID,called)
   });
   socket.on("entry_playing", (room,entryID,playing) => {
     console.log(room,entryID,playing);
-    io.to(room).emit('entry_playing',entryID,playing)
+    io.in(room).emit('entry_playing',entryID,playing)
   });
 
   
