@@ -250,6 +250,7 @@ function create_schedule(comp,entries){
 
                             //the order is the current permutation 
                             const order = memo.concat(cur)
+                            console.log(order);
                             return_room = []
 
                             //gives an array of all the start times in this permutations 
