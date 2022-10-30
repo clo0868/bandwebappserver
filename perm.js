@@ -1,108 +1,81 @@
-const comp = {"compID":2,"comp_name":"HPSC Sunday Morning Solos","comp_location":"St Andrews College","comp_start_time":"2022-06-25T21:00:00.000Z","ent_open_time":"2022-06-17T21:00:00.000Z","ent_close_time":"2023-06-24T21:00:00.000Z","comp_rooms":"[{\"room_name\":\"1\",\"room_judge\":\"1\",\"room_steward\":\"1\"},{\"room_name\":\"2\",\"room_judge\":\"2\",\"room_steward\":\"2\"},{\"room_name\":\"3\",\"room_judge\":\"3\",\"room_steward\":\"3\"},{\"room_name\":\"4\",\"room_judge\":\"4\",\"room_steward\":\"4\"}]","comp_events":"[{\"event\":1,\"grade\":1},{\"event\":2,\"grade\":1},{\"event\":4,\"grade\":1},{\"event\":1,\"grade\":2},{\"event\":2,\"grade\":2},{\"event\":4,\"grade\":2},{\"event\":1,\"grade\":3},{\"event\":2,\"grade\":3},{\"event\":4,\"grade\":3},{\"event\":1,\"grade\":4},{\"event\":2,\"grade\":4},{\"event\":4,\"grade\":4},{\"event\":5,\"grade\":5},{\"event\":3,\"grade\":6}]","comp_schedule":"0"}
-
+const comp = {"compID":22,"comp_name":"HPSC Sunday Morning Solos","comp_location":"StAC","comp_start_time":"2022-10-30T10:56:16.000Z","ent_open_time":"2022-10-10T18:36:16.000Z","ent_close_time":"2022-10-30T10:56:16.000Z","comp_rooms":"[{\"room_name\":\"1\",\"room_judge\":{\"user_name\":\"Allan McKenzie\"},\"room_steward\":{\"user_name\":\"Renee Brook\"}},{\"room_name\":\"2\",\"room_judge\":{\"user_name\":\"Tom Glover\"},\"room_steward\":{\"user_name\":\"Jodie Paterson\"}},{\"room_name\":\"3\",\"room_judge\":{\"user_name\":\"Evan Williams\"},\"room_steward\":{\"user_name\":\"Courtney Williamson\"}},{\"room_name\":\"4\",\"room_judge\":{\"user_name\":\"Peter McLean\"},\"room_steward\":{\"user_name\":\"Stella Diamond\"}}]","comp_events":"[{\"event\":1,\"grade\":4},{\"event\":2,\"grade\":4},{\"event\":4,\"grade\":4},{\"event\":1,\"grade\":3},{\"event\":2,\"grade\":3},{\"event\":4,\"grade\":3},{\"event\":1,\"grade\":2},{\"event\":2,\"grade\":2},{\"event\":3,\"grade\":6},{\"event\":5,\"grade\":5}]","comp_schedule":"0"}
 const entries = [
-    {"entryID":1,"userID":4,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":2,"userID":4,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":3,"userID":4,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":4,"userID":5,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":5,"userID":5,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":6,"userID":5,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":7,"userID":6,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":8,"userID":6,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":9,"userID":6,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":10,"userID":7,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":11,"userID":7,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":12,"userID":7,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":13,"userID":8,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":14,"userID":8,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":15,"userID":8,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":16,"userID":9,"compID":2,"gradeID":3,"eventID":1,"placing":0},
-    {"entryID":17,"userID":9,"compID":2,"gradeID":3,"eventID":2,"placing":0},
-    {"entryID":18,"userID":9,"compID":2,"gradeID":3,"eventID":4,"placing":0},
-    {"entryID":19,"userID":10,"compID":2,"gradeID":2,"eventID":1,"placing":0},
-    {"entryID":20,"userID":10,"compID":2,"gradeID":2,"eventID":2,"placing":0},
-    {"entryID":21,"userID":10,"compID":2,"gradeID":2,"eventID":4,"placing":0},
-    {"entryID":22,"userID":11,"compID":2,"gradeID":2,"eventID":1,"placing":0},
-    {"entryID":23,"userID":11,"compID":2,"gradeID":2,"eventID":2,"placing":0},
-    {"entryID":24,"userID":11,"compID":2,"gradeID":2,"eventID":4,"placing":0},
-    {"entryID":25,"userID":12,"compID":2,"gradeID":2,"eventID":1,"placing":0},
-    {"entryID":26,"userID":12,"compID":2,"gradeID":2,"eventID":2,"placing":0},
-    {"entryID":27,"userID":12,"compID":2,"gradeID":2,"eventID":4,"placing":0},
-    {"entryID":28,"userID":13,"compID":2,"gradeID":2,"eventID":1,"placing":0},
-    {"entryID":29,"userID":13,"compID":2,"gradeID":2,"eventID":2,"placing":0},
-    {"entryID":30,"userID":13,"compID":2,"gradeID":2,"eventID":4,"placing":0},
-    {"entryID":31,"userID":15,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":32,"userID":15,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":33,"userID":15,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":34,"userID":16,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":35,"userID":16,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":36,"userID":16,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":37,"userID":17,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":38,"userID":17,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":39,"userID":17,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":40,"userID":18,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":41,"userID":18,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":42,"userID":18,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":43,"userID":19,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":44,"userID":19,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":45,"userID":19,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":46,"userID":20,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":47,"userID":20,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":48,"userID":20,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":49,"userID":21,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":50,"userID":21,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":51,"userID":21,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":52,"userID":22,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":53,"userID":22,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":54,"userID":22,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":55,"userID":23,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":56,"userID":23,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":57,"userID":23,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":58,"userID":24,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":59,"userID":24,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":60,"userID":24,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":61,"userID":26,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":62,"userID":26,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":63,"userID":26,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":64,"userID":27,"compID":2,"gradeID":1,"eventID":1,"placing":0},
-    {"entryID":65,"userID":27,"compID":2,"gradeID":1,"eventID":2,"placing":0},
-    {"entryID":66,"userID":27,"compID":2,"gradeID":1,"eventID":4,"placing":0},
-    {"entryID":67,"userID":14,"compID":2,"gradeID":4,"eventID":1,"placing":0},
-    {"entryID":68,"userID":14,"compID":2,"gradeID":4,"eventID":2,"placing":0},
-    {"entryID":69,"userID":14,"compID":2,"gradeID":4,"eventID":4,"placing":0},
-    {"entryID":70,"userID":14,"compID":2,"gradeID":5,"eventID":5,"placing":0},
-    {"entryID":71,"userID":14,"compID":2,"gradeID":6,"eventID":3,"placing":0},
-    {"entryID":72,"userID":25,"compID":2,"gradeID":4,"eventID":1,"placing":0},
-    {"entryID":73,"userID":25,"compID":2,"gradeID":4,"eventID":2,"placing":0},
-    {"entryID":74,"userID":25,"compID":2,"gradeID":4,"eventID":4,"placing":0},
-    {"entryID":75,"userID":25,"compID":2,"gradeID":5,"eventID":5,"placing":0},
-    {"entryID":76,"userID":25,"compID":2,"gradeID":6,"eventID":3,"placing":0},
-    {"entryID":77,"userID":30,"compID":2,"gradeID":4,"eventID":1,"placing":0},
-    {"entryID":78,"userID":30,"compID":2,"gradeID":4,"eventID":2,"placing":0},
-    {"entryID":79,"userID":30,"compID":2,"gradeID":4,"eventID":4,"placing":0},
-    {"entryID":80,"userID":30,"compID":2,"gradeID":5,"eventID":5,"placing":0},
-    {"entryID":81,"userID":30,"compID":2,"gradeID":6,"eventID":3,"placing":0},
-    {"entryID":82,"userID":31,"compID":2,"gradeID":4,"eventID":1,"placing":0},
-    {"entryID":83,"userID":31,"compID":2,"gradeID":4,"eventID":2,"placing":0},
-    {"entryID":84,"userID":31,"compID":2,"gradeID":4,"eventID":4,"placing":0},
-    {"entryID":85,"userID":31,"compID":2,"gradeID":5,"eventID":5,"placing":0},
-    {"entryID":86,"userID":31,"compID":2,"gradeID":6,"eventID":3,"placing":0},
-    {"entryID":87,"userID":32,"compID":2,"gradeID":4,"eventID":1,"placing":0},
-    {"entryID":88,"userID":32,"compID":2,"gradeID":4,"eventID":2,"placing":0},
-    {"entryID":89,"userID":32,"compID":2,"gradeID":4,"eventID":4,"placing":0},
-    {"entryID":90,"userID":32,"compID":2,"gradeID":5,"eventID":5,"placing":0},
-    {"entryID":91,"userID":32,"compID":2,"gradeID":6,"eventID":3,"placing":0},
-    ]
-
-
-
-
-
-          
-
-
-
-
+    {"entryID":286,"userID":100,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Alice Glover ","email":"al@a.a","user":"AliceGlover","user_pass":"2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":287,"userID":100,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Alice Glover ","email":"al@a.a","user":"AliceGlover","user_pass":"2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":288,"userID":101,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Anton Zhang","email":"Anton@a.z","user":"AntonZhang","user_pass":"1f29f2d29f02f2608eb72d45625ba3a851eda1ee2be1bda22427a584b787c722","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":289,"userID":101,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Anton Zhang","email":"Anton@a.z","user":"AntonZhang","user_pass":"1f29f2d29f02f2608eb72d45625ba3a851eda1ee2be1bda22427a584b787c722","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":290,"userID":101,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Anton Zhang","email":"Anton@a.z","user":"AntonZhang","user_pass":"1f29f2d29f02f2608eb72d45625ba3a851eda1ee2be1bda22427a584b787c722","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":291,"userID":101,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Anton Zhang","email":"Anton@a.z","user":"AntonZhang","user_pass":"1f29f2d29f02f2608eb72d45625ba3a851eda1ee2be1bda22427a584b787c722","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":292,"userID":102,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Lachlan Sneddon","email":"Lachlan@l.s","user":"LachlanSneddon","user_pass":"11becb396444ef85a1a5023d3b6393acb519d6576484e76cf13ea5ee3da07d64","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":293,"userID":102,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Lachlan Sneddon","email":"Lachlan@l.s","user":"LachlanSneddon","user_pass":"11becb396444ef85a1a5023d3b6393acb519d6576484e76cf13ea5ee3da07d64","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":294,"userID":103,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Emily Carswell","email":"Emily@e.c","user":"EmilyCarswell","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":295,"userID":103,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Emily Carswell","email":"Emily@e.c","user":"EmilyCarswell","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":296,"userID":103,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Emily Carswell","email":"Emily@e.c","user":"EmilyCarswell","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":297,"userID":103,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Emily Carswell","email":"Emily@e.c","user":"EmilyCarswell","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":298,"userID":104,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"William Nicholls","email":"William@w.n","user":"WilliamNicholls","user_pass":"d0784c6b1785dcd474688d46b1fe99792ff66f6b56bebf26dda0c08516bac22e","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":299,"userID":104,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"William Nicholls","email":"William@w.n","user":"WilliamNicholls","user_pass":"d0784c6b1785dcd474688d46b1fe99792ff66f6b56bebf26dda0c08516bac22e","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":300,"userID":104,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"William Nicholls","email":"William@w.n","user":"WilliamNicholls","user_pass":"d0784c6b1785dcd474688d46b1fe99792ff66f6b56bebf26dda0c08516bac22e","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":301,"userID":104,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"William Nicholls","email":"William@w.n","user":"WilliamNicholls","user_pass":"d0784c6b1785dcd474688d46b1fe99792ff66f6b56bebf26dda0c08516bac22e","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":302,"userID":105,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Jed Thompson","email":"Jed@j.t","user":"JedThompson","user_pass":"53accc333dc04657e052bb978473ba20ec1162b8ba1b96b21fc7edc30fa3c3b3","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":303,"userID":105,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Jed Thompson","email":"Jed@j.t","user":"JedThompson","user_pass":"53accc333dc04657e052bb978473ba20ec1162b8ba1b96b21fc7edc30fa3c3b3","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":304,"userID":105,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Jed Thompson","email":"Jed@j.t","user":"JedThompson","user_pass":"53accc333dc04657e052bb978473ba20ec1162b8ba1b96b21fc7edc30fa3c3b3","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":305,"userID":105,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Jed Thompson","email":"Jed@j.t","user":"JedThompson","user_pass":"53accc333dc04657e052bb978473ba20ec1162b8ba1b96b21fc7edc30fa3c3b3","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":306,"userID":106,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":307,"userID":106,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":308,"userID":106,"compID":22,"gradeID":4,"eventID":4,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":309,"userID":106,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":310,"userID":106,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":311,"userID":106,"compID":22,"gradeID":3,"eventID":4,"placing":0,"user_name":"Sam Foote ","email":"Sam@s.f","user":"SamFoote","user_pass":"e96e02d8e47f2a7c03be5117b3ed175c52aa30fb22028cf9c96f261563577605","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":312,"userID":107,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"James Anthony","email":"james@j.a","user":"JamesAnthony","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":313,"userID":107,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"James Anthony","email":"james@j.a","user":"JamesAnthony","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":314,"userID":107,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"James Anthony","email":"james@j.a","user":"JamesAnthony","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":315,"userID":107,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"James Anthony","email":"james@j.a","user":"JamesAnthony","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":316,"userID":108,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Angelique Kinsman","email":"Angelique@a.k","user":"AngeliqueKinsman","user_pass":"004e0187bb762756b810f9cfd743ffced0151bbe79f76765137b1784cffc34d9","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":317,"userID":108,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Angelique Kinsman","email":"Angelique@a.k","user":"AngeliqueKinsman","user_pass":"004e0187bb762756b810f9cfd743ffced0151bbe79f76765137b1784cffc34d9","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":318,"userID":108,"compID":22,"gradeID":4,"eventID":4,"placing":0,"user_name":"Angelique Kinsman","email":"Angelique@a.k","user":"AngeliqueKinsman","user_pass":"004e0187bb762756b810f9cfd743ffced0151bbe79f76765137b1784cffc34d9","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":319,"userID":108,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Angelique Kinsman","email":"Angelique@a.k","user":"AngeliqueKinsman","user_pass":"004e0187bb762756b810f9cfd743ffced0151bbe79f76765137b1784cffc34d9","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":320,"userID":109,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Charlie Gregg","email":"charlie@c.g","user":"CharlieGregg","user_pass":"b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":321,"userID":109,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Charlie Gregg","email":"charlie@c.g","user":"CharlieGregg","user_pass":"b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":322,"userID":109,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Charlie Gregg","email":"charlie@c.g","user":"CharlieGregg","user_pass":"b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":323,"userID":109,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Charlie Gregg","email":"charlie@c.g","user":"CharlieGregg","user_pass":"b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":324,"userID":110,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Anthony Song","email":"anthony@a.s","user":"AnthonySong","user_pass":"502913bfdd49eab564282dff101e6d167321237eeec66eedb2a438ed80fdeaa0","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":325,"userID":110,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Anthony Song","email":"anthony@a.s","user":"AnthonySong","user_pass":"502913bfdd49eab564282dff101e6d167321237eeec66eedb2a438ed80fdeaa0","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":326,"userID":110,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Anthony Song","email":"anthony@a.s","user":"AnthonySong","user_pass":"502913bfdd49eab564282dff101e6d167321237eeec66eedb2a438ed80fdeaa0","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":327,"userID":110,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Anthony Song","email":"anthony@a.s","user":"AnthonySong","user_pass":"502913bfdd49eab564282dff101e6d167321237eeec66eedb2a438ed80fdeaa0","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":328,"userID":111,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":329,"userID":111,"compID":22,"gradeID":4,"eventID":2,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":330,"userID":111,"compID":22,"gradeID":4,"eventID":4,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":331,"userID":111,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":332,"userID":111,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":333,"userID":111,"compID":22,"gradeID":3,"eventID":4,"placing":0,"user_name":"Cameron Sharpe ","email":"cameron@c.s","user":"CameronSharpe","user_pass":"e66e9a769d159582cda9c0da24247e36340045a7c340ec59dcd63c0b61cc95cc","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":334,"userID":112,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"Ryley Medland","email":"ryley@r.m","user":"RyleyMedland","user_pass":"e60c54bd430942cea124c0fca0f5870886d0720988c63466b5dc55556002d8e5","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":335,"userID":112,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Ryley Medland","email":"ryley@r.m","user":"RyleyMedland","user_pass":"e60c54bd430942cea124c0fca0f5870886d0720988c63466b5dc55556002d8e5","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":336,"userID":113,"compID":22,"gradeID":4,"eventID":1,"placing":0,"user_name":"James Stockdale","email":"james@j.s","user":"JamesStockdale","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":337,"userID":113,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"James Stockdale","email":"james@j.s","user":"JamesStockdale","user_pass":"119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":338,"userID":114,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Cooper Gallagher","email":"cooper@c.g","user":"CooperGallagher","user_pass":"7781113a99f177280ad3e89bcf631f03acb8fa8e626082dd9158eeee0bdd5674","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":339,"userID":114,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Cooper Gallagher","email":"cooper@c.g","user":"CooperGallagher","user_pass":"7781113a99f177280ad3e89bcf631f03acb8fa8e626082dd9158eeee0bdd5674","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":340,"userID":114,"compID":22,"gradeID":3,"eventID":4,"placing":0,"user_name":"Cooper Gallagher","email":"cooper@c.g","user":"CooperGallagher","user_pass":"7781113a99f177280ad3e89bcf631f03acb8fa8e626082dd9158eeee0bdd5674","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":341,"userID":114,"compID":22,"gradeID":2,"eventID":1,"placing":0,"user_name":"Cooper Gallagher","email":"cooper@c.g","user":"CooperGallagher","user_pass":"7781113a99f177280ad3e89bcf631f03acb8fa8e626082dd9158eeee0bdd5674","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":342,"userID":114,"compID":22,"gradeID":2,"eventID":2,"placing":0,"user_name":"Cooper Gallagher","email":"cooper@c.g","user":"CooperGallagher","user_pass":"7781113a99f177280ad3e89bcf631f03acb8fa8e626082dd9158eeee0bdd5674","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":343,"userID":115,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Emily Brook ","email":"emily@e.b","user":"EmilyBrook","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":344,"userID":115,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Emily Brook ","email":"emily@e.b","user":"EmilyBrook","user_pass":"e8e9689deac5bac977b64e85c1105bd1419608f1223bdafb8e5fbdf6cf939879","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":345,"userID":116,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Iona Lawson","email":"iona@i.l","user":"IonaLawson","user_pass":"d345d7b19a0eb9cf6a0676241087f7e479faab5070acfd56834a04f3206588d4","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":346,"userID":116,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Iona Lawson","email":"iona@i.l","user":"IonaLawson","user_pass":"d345d7b19a0eb9cf6a0676241087f7e479faab5070acfd56834a04f3206588d4","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":347,"userID":116,"compID":22,"gradeID":3,"eventID":4,"placing":0,"user_name":"Iona Lawson","email":"iona@i.l","user":"IonaLawson","user_pass":"d345d7b19a0eb9cf6a0676241087f7e479faab5070acfd56834a04f3206588d4","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":348,"userID":116,"compID":22,"gradeID":2,"eventID":1,"placing":0,"user_name":"Iona Lawson","email":"iona@i.l","user":"IonaLawson","user_pass":"d345d7b19a0eb9cf6a0676241087f7e479faab5070acfd56834a04f3206588d4","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":349,"userID":116,"compID":22,"gradeID":2,"eventID":2,"placing":0,"user_name":"Iona Lawson","email":"iona@i.l","user":"IonaLawson","user_pass":"d345d7b19a0eb9cf6a0676241087f7e479faab5070acfd56834a04f3206588d4","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":350,"userID":117,"compID":22,"gradeID":3,"eventID":1,"placing":0,"user_name":"Madisyn Braithwaite","email":"madisyn@m.b","user":"MadisynBraithwaite","user_pass":"ef59bdc966f599df4d4f307adf842c66d1fda60e07528e64ca525e9f3cde9023","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":351,"userID":117,"compID":22,"gradeID":3,"eventID":2,"placing":0,"user_name":"Madisyn Braithwaite","email":"madisyn@m.b","user":"MadisynBraithwaite","user_pass":"ef59bdc966f599df4d4f307adf842c66d1fda60e07528e64ca525e9f3cde9023","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":352,"userID":117,"compID":22,"gradeID":3,"eventID":4,"placing":0,"user_name":"Madisyn Braithwaite","email":"madisyn@m.b","user":"MadisynBraithwaite","user_pass":"ef59bdc966f599df4d4f307adf842c66d1fda60e07528e64ca525e9f3cde9023","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":353,"userID":117,"compID":22,"gradeID":2,"eventID":1,"placing":0,"user_name":"Madisyn Braithwaite","email":"madisyn@m.b","user":"MadisynBraithwaite","user_pass":"ef59bdc966f599df4d4f307adf842c66d1fda60e07528e64ca525e9f3cde9023","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":354,"userID":117,"compID":22,"gradeID":2,"eventID":2,"placing":0,"user_name":"Madisyn Braithwaite","email":"madisyn@m.b","user":"MadisynBraithwaite","user_pass":"ef59bdc966f599df4d4f307adf842c66d1fda60e07528e64ca525e9f3cde9023","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":355,"userID":118,"compID":22,"gradeID":6,"eventID":3,"placing":0,"user_name":"Lily May","email":"Lily@l.m","user":"LilyMay","user_pass":"40903c59d19feef1d67c455499304c194ebdec82df78790c3ceaac92bd1d84be","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":356,"userID":119,"compID":22,"gradeID":6,"eventID":3,"placing":0,"user_name":"Fletcher McNeill","email":"fletcher@f.m","user":"FletcherMcNeill","user_pass":"fad68de0366cdcbbba040891fd694529cce0a154f4e55bdc8d334c4df2b5735c","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":357,"userID":120,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Matteo Ballara","email":"matteo@m.b","user":"MatteoBallara","user_pass":"fe301eaaac49b4652b8dfd9fb0e913683ac5600f59370a6261824ab608b4fad7","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":358,"userID":121,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"George MacLean","email":"george@g.m","user":"GeorgeMacLean","user_pass":"0522a55e2d5f0993a3d66d28864b2862a7218a75ea7968b075333434404485c3","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":359,"userID":122,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Issac Seatter","email":"issac@i.s","user":"IssacSeatter","user_pass":"7fafa82b262fd29af18131b5407c2407be9857439b8a4df769f430fb4e929c6a","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":360,"userID":123,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Frank Morrison","email":"frank@f.m","user":"FrankMorrison","user_pass":"77646f5a4f3166637627abe998e7a1470fe72d8b430f067dafa86263f1f23f94","user_type":0,"user_approve":1,"parent":0},
+    {"entryID":361,"userID":124,"compID":22,"gradeID":5,"eventID":5,"placing":0,"user_name":"Jacob Triplow","email":"jacob@j.t","user":"JacobTriplow","user_pass":"c35d6aaf3b3885dfc9f36cddf48a65e93a919e13165fbbcfc0f9de5636279559","user_type":0,"user_approve":1,"parent":0}]
 
 
 function create_schedule(comp,entries){
@@ -150,7 +123,13 @@ function create_schedule(comp,entries){
         const user_list = [...new Set(entries.map((v) => (v.userID)))].map((v)=> ({userID:v,play_times:[]}));
 
         
-        
+        function chunk(arr, chunkSize) {
+            if (chunkSize <= 0) throw "Invalid chunk size";
+            var R = [];
+            for (var i=0,len=arr.length; i<len; i+=chunkSize)
+              R.push(arr.slice(i,i+chunkSize));
+            return R;
+          }
         
     
         function isPossiblePlayTime(user,play_time){
@@ -164,7 +143,7 @@ function create_schedule(comp,entries){
     
             return user.play_times.map((user_play_time) =>{ 
                 //check if given play time is within 5 minutes of another playing time of theirs
-                return (play_time <= (user_play_time - 20)|| play_time >= (user_play_time + 20))
+                return (play_time <= (user_play_time - 15)|| play_time >= (user_play_time + 15))
     
                 //if any values return false user cannot play at that time 
             }).every((value) => (value === true))
@@ -176,6 +155,132 @@ function create_schedule(comp,entries){
             var skip
             //initiate cannot play array 
             var cannot_play = []
+            
+            if (entries.length > 5) {
+                var entry_chunks
+                entry_chunks = chunk(entries,5)
+                var cannot_sub_event = []
+                var skip_sub_event
+                function permute(arr,delay,memo) {
+
+                
+                    //init cur set memo to empty array if null
+                    //only occurs in the first time not on reoccurences 
+                    var cur, memo = memo || [];
+                
+                    //same as for loop in the order room function
+                    //just rotates the current pivot through the array 
+                    for (var i = 0; i < arr.length; i++) {
+                    
+                        if (memo.length > skip_sub_event) {
+                            i = arr.length
+                        }else{
+                        
+                        skip_sub_event = undefined
+                        //take off first element in array
+                        cur = arr.splice(i, 1);
+    
+                        //occurs when perm is found as it will be 8 layers in 
+                        if (arr.length === 0) {
+    
+                            //inner try except so it can throw to parent function 
+                            try {
+    
+                                //the order is the current permutation 
+                                const order = memo.concat(cur)
+                                const return_event = []
+    
+                               
+    
+                                //gives an array of all the start times in this permutations 
+                                const start_times = order.map((event,event_index) => {return (order.slice(0,event_index).reduce((t,v) => {return t+v.time},0))+delay})
+                                
+                                //check if the event has already been checked at the given start times
+                                const already_been_checked = cannot_sub_event.filter((v) => {
+    
+                                    //returns truw if already been checked 
+                                    return (start_times.every((time) => {return time !== v.start_time}))
+                                })
+    
+                                if (already_been_checked.length>0){
+                                    //throw if need to skip perm 
+                                    throw('skip')
+                                }
+                                
+                                for (const [sub_event_index,sub_event] of order.entries()) {
+                                    
+                                    //for each event in this permutation 
+                                    //gives start time of this event based on times of previous events 
+                                    const start_time = sub_event_index*5+delay
+                                
+                                    //returns an array of sorted entries if possible 
+                                    //if not possible returns undefined
+                                    const ordered_event = orderEvent(sub_event.slice(),start_time,user_list)
+    
+                                    //if order of entries was found
+                                    if (ordered_event) {   
+                                        //add event to the room 
+                                        return_event.push(ordered_event)
+    
+                                        //if all rooms are add throw room object out of loop 
+                                        if (return_event.length === order.length) {
+                                            cannot_sub_event  = []
+                                            throw({return_event});                                       
+                                        }                   
+                                    }else{
+                                        //if event wasnt ordered add to couldnt event array
+                                        //along with the start time of that event 
+                                        skip_sub_event = sub_event_index 
+                                        cannot_sub_event.push({sub_event,start_time})
+                                        throw('skip')
+                                    }
+                                    
+                                } 
+                                
+                            } catch (event_data) {
+                                //catchs skips and room data
+                                if (event_data !== 'skip') {
+                                    //if room data thrown throw it to outer catch 
+                                    throw(event_data)
+                                }
+                                //if skipped continue with next perm 
+                            }
+                            
+                            
+                        }
+                        
+                        //permute the next layer down 
+                        permute(arr.slice(),delay, memo.concat(cur));
+    
+                        //push pivot entry back in with others in opposite direction 
+                        arr.splice(i, 0, cur[0]);
+                    }
+                    }
+                }
+    
+                //outer try except so it can break out of permute function 
+                try{
+                    
+                        permute(entry_chunks.reverse(),start_time)
+                    
+                    
+                    //starts the permute function with list of entries and the event start time 
+                    
+    
+                    //reset cannot play array if no permutations were found 
+                    //the event will be in a different position next time 
+                    cannot_sub_event = []
+    
+                }catch(err){
+                    //if event is thrown out of permute
+                    //then event has been ordered succesfully 
+                    //returns sorted event to the room sort function
+                    return {return_event:err.return_event.flatMap((obj) => {return obj.return_event}),time:err.return_event.reduce((t,v) => {return t + v.time},0)+5}
+                }
+
+
+                
+            }else{
             //function creating permutations of the entries in an event
             function permute(arr,start_time, memo) {
 
@@ -200,10 +305,9 @@ function create_schedule(comp,entries){
                     //if failed index above or equal to this pivot index
 
                     //reset skip as new perms used 
-                   // skip = undefined
+                    skip = undefined
                     //take off the first element of the array 
                     cur = arr.splice(i, 1);
-                    //console.log(arr.length,memo.length);
 
                     //if it took off the last element then a permutation has been found 
                     if (arr.length === 0) {
@@ -215,7 +319,6 @@ function create_schedule(comp,entries){
                         try {
                             //order is given by the permutation 
                             const order = memo.concat(cur)
-
                             //checks if any user is at a time that has already been checked 
                             const already_been_checked = cannot_play.filter((v) => {
 
@@ -224,7 +327,9 @@ function create_schedule(comp,entries){
                             })
 
                             if (already_been_checked.length>0){
-                                //break try catch if perm wont work 
+                                //break try catch if perm wont work
+                                
+                                skip = already_been_checked[0].perm_index
                                 throw('skip')
                             }
                         
@@ -301,9 +406,12 @@ function create_schedule(comp,entries){
 
             //outer try except so it can break out of permute function 
             try{
-
+                
+                    permute(entries.reverse(),start_time)
+                
+                
                 //starts the permute function with list of entries and the event start time 
-                permute(entries.reverse(),start_time)
+                
 
                 //reset cannot play array if no permutations were found 
                 //the event will be in a different position next time 
@@ -317,9 +425,8 @@ function create_schedule(comp,entries){
             }
             
         }
-    
+        }
         function orderRoom(room,user_list,max_time){
-
 
             //cannot event function 
             //same as cannot play 
@@ -356,6 +463,8 @@ function create_schedule(comp,entries){
                             //the order is the current permutation 
                             const order = memo.concat(cur)
                             return_room = []
+
+                           
 
                             //gives an array of all the start times in this permutations 
                             const start_times = order.map((event,event_index) => {return (order.slice(0,event_index).reduce((t,v) => {return t+v.time},0))+delay})
@@ -430,7 +539,6 @@ function create_schedule(comp,entries){
             
             //returns finish time of the room
             const finish_time = room.reduce((t,v) => {return t+v.time},0)
-            //console.log(finish_time);
             //calculates any float time avalible for non critical rooms 
             const float_time = max_time-finish_time
             var delay = 0
@@ -449,7 +557,6 @@ function create_schedule(comp,entries){
 
                     //add to delay if no possible perm is found 
                     delay+=5
-                    console.log('delay is '+delay);
                 }
                 
                   
@@ -458,7 +565,6 @@ function create_schedule(comp,entries){
                 
                 //for each event in the room 
                 for (const [eventi,event] of err.return_room.entries()) {
-                    console.log(event);
                     //for each entry in each event 
                     event.return_event.forEach((entry) => {    
 
@@ -489,11 +595,9 @@ function create_schedule(comp,entries){
 
             //orders the room 
             const ordered_room = orderRoom(room,user_list,max_time)
-            //console.log(ordered_room);
             return ordered_room
             
         })
-        //console.log(result);
         return(result)
 
 
@@ -522,7 +626,6 @@ function create_schedule(comp,entries){
     //find critical order
     const critical_order = find_critical_order(all_events,comp_rooms.length)
     console.log(critical_order);
-    //critical_order.map((room,roomindex) => {room.map((event,eventindex) => {console.log(roomindex,eventindex,event.event_entries.length);})})
     //create schdule
     const schedule = sort_users(entries,critical_order)
 

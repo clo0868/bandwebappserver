@@ -1,3 +1,98 @@
+const comp = {"compID":2,"comp_name":"HPSC Sunday Morning Solos","comp_location":"St Andrews College","comp_start_time":"2022-06-25T21:00:00.000Z","ent_open_time":"2022-06-17T21:00:00.000Z","ent_close_time":"2023-06-24T21:00:00.000Z","comp_rooms":"[{\"room_name\":\"1\",\"room_judge\":\"1\",\"room_steward\":\"1\"},{\"room_name\":\"2\",\"room_judge\":\"2\",\"room_steward\":\"2\"},{\"room_name\":\"3\",\"room_judge\":\"3\",\"room_steward\":\"3\"},{\"room_name\":\"4\",\"room_judge\":\"4\",\"room_steward\":\"4\"}]","comp_events":"[{\"event\":1,\"grade\":1},{\"event\":2,\"grade\":1},{\"event\":4,\"grade\":1},{\"event\":1,\"grade\":2},{\"event\":2,\"grade\":2},{\"event\":4,\"grade\":2},{\"event\":1,\"grade\":3},{\"event\":2,\"grade\":3},{\"event\":4,\"grade\":3},{\"event\":1,\"grade\":4},{\"event\":2,\"grade\":4},{\"event\":4,\"grade\":4},{\"event\":5,\"grade\":5},{\"event\":3,\"grade\":6}]","comp_schedule":"0"}
+
+const entries = [
+    {"entryID":1,"userID":4,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":2,"userID":4,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":3,"userID":4,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":4,"userID":5,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":5,"userID":5,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":6,"userID":5,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":7,"userID":6,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":8,"userID":6,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":9,"userID":6,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":10,"userID":7,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":11,"userID":7,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":12,"userID":7,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":13,"userID":8,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":14,"userID":8,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":15,"userID":8,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":16,"userID":9,"compID":2,"gradeID":3,"eventID":1,"placing":0},
+    {"entryID":17,"userID":9,"compID":2,"gradeID":3,"eventID":2,"placing":0},
+    {"entryID":18,"userID":9,"compID":2,"gradeID":3,"eventID":4,"placing":0},
+    {"entryID":19,"userID":10,"compID":2,"gradeID":2,"eventID":1,"placing":0},
+    {"entryID":20,"userID":10,"compID":2,"gradeID":2,"eventID":2,"placing":0},
+    {"entryID":21,"userID":10,"compID":2,"gradeID":2,"eventID":4,"placing":0},
+    {"entryID":22,"userID":11,"compID":2,"gradeID":2,"eventID":1,"placing":0},
+    {"entryID":23,"userID":11,"compID":2,"gradeID":2,"eventID":2,"placing":0},
+    {"entryID":24,"userID":11,"compID":2,"gradeID":2,"eventID":4,"placing":0},
+    {"entryID":25,"userID":12,"compID":2,"gradeID":2,"eventID":1,"placing":0},
+    {"entryID":26,"userID":12,"compID":2,"gradeID":2,"eventID":2,"placing":0},
+    {"entryID":27,"userID":12,"compID":2,"gradeID":2,"eventID":4,"placing":0},
+    {"entryID":28,"userID":13,"compID":2,"gradeID":2,"eventID":1,"placing":0},
+    {"entryID":29,"userID":13,"compID":2,"gradeID":2,"eventID":2,"placing":0},
+    {"entryID":30,"userID":13,"compID":2,"gradeID":2,"eventID":4,"placing":0},
+    {"entryID":31,"userID":15,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":32,"userID":15,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":33,"userID":15,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":34,"userID":16,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":35,"userID":16,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":36,"userID":16,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":37,"userID":17,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":38,"userID":17,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":39,"userID":17,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":40,"userID":18,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":41,"userID":18,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":42,"userID":18,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":43,"userID":19,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":44,"userID":19,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":45,"userID":19,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":46,"userID":20,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":47,"userID":20,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":48,"userID":20,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":49,"userID":21,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":50,"userID":21,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":51,"userID":21,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":52,"userID":22,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":53,"userID":22,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":54,"userID":22,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":55,"userID":23,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":56,"userID":23,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":57,"userID":23,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":58,"userID":24,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":59,"userID":24,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":60,"userID":24,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":61,"userID":26,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":62,"userID":26,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":63,"userID":26,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":64,"userID":27,"compID":2,"gradeID":1,"eventID":1,"placing":0},
+    {"entryID":65,"userID":27,"compID":2,"gradeID":1,"eventID":2,"placing":0},
+    {"entryID":66,"userID":27,"compID":2,"gradeID":1,"eventID":4,"placing":0},
+    {"entryID":67,"userID":14,"compID":2,"gradeID":4,"eventID":1,"placing":0},
+    {"entryID":68,"userID":14,"compID":2,"gradeID":4,"eventID":2,"placing":0},
+    {"entryID":69,"userID":14,"compID":2,"gradeID":4,"eventID":4,"placing":0},
+    {"entryID":70,"userID":14,"compID":2,"gradeID":5,"eventID":5,"placing":0},
+    {"entryID":71,"userID":14,"compID":2,"gradeID":6,"eventID":3,"placing":0},
+    {"entryID":72,"userID":25,"compID":2,"gradeID":4,"eventID":1,"placing":0},
+    {"entryID":73,"userID":25,"compID":2,"gradeID":4,"eventID":2,"placing":0},
+    {"entryID":74,"userID":25,"compID":2,"gradeID":4,"eventID":4,"placing":0},
+    {"entryID":75,"userID":25,"compID":2,"gradeID":5,"eventID":5,"placing":0},
+    {"entryID":76,"userID":25,"compID":2,"gradeID":6,"eventID":3,"placing":0},
+    {"entryID":77,"userID":30,"compID":2,"gradeID":4,"eventID":1,"placing":0},
+    {"entryID":78,"userID":30,"compID":2,"gradeID":4,"eventID":2,"placing":0},
+    {"entryID":79,"userID":30,"compID":2,"gradeID":4,"eventID":4,"placing":0},
+    {"entryID":80,"userID":30,"compID":2,"gradeID":5,"eventID":5,"placing":0},
+    {"entryID":81,"userID":30,"compID":2,"gradeID":6,"eventID":3,"placing":0},
+    {"entryID":82,"userID":31,"compID":2,"gradeID":4,"eventID":1,"placing":0},
+    {"entryID":83,"userID":31,"compID":2,"gradeID":4,"eventID":2,"placing":0},
+    {"entryID":84,"userID":31,"compID":2,"gradeID":4,"eventID":4,"placing":0},
+    {"entryID":85,"userID":31,"compID":2,"gradeID":5,"eventID":5,"placing":0},
+    {"entryID":86,"userID":31,"compID":2,"gradeID":6,"eventID":3,"placing":0},
+    {"entryID":87,"userID":32,"compID":2,"gradeID":4,"eventID":1,"placing":0},
+    {"entryID":88,"userID":32,"compID":2,"gradeID":4,"eventID":2,"placing":0},
+    {"entryID":89,"userID":32,"compID":2,"gradeID":4,"eventID":4,"placing":0},
+    {"entryID":90,"userID":32,"compID":2,"gradeID":5,"eventID":5,"placing":0},
+    {"entryID":91,"userID":32,"compID":2,"gradeID":6,"eventID":3,"placing":0},
+    ]
 
 
 function create_schedule(comp,entries){
@@ -45,13 +140,7 @@ function create_schedule(comp,entries){
         const user_list = [...new Set(entries.map((v) => (v.userID)))].map((v)=> ({userID:v,play_times:[]}));
 
         
-        function chunk(arr, chunkSize) {
-            if (chunkSize <= 0) throw "Invalid chunk size";
-            var R = [];
-            for (var i=0,len=arr.length; i<len; i+=chunkSize)
-              R.push(arr.slice(i,i+chunkSize));
-            return R;
-          }
+        
         
     
         function isPossiblePlayTime(user,play_time){
@@ -77,132 +166,6 @@ function create_schedule(comp,entries){
             var skip
             //initiate cannot play array 
             var cannot_play = []
-            
-            if (entries.length > 5) {
-                var entry_chunks
-                entry_chunks = chunk(entries,5)
-                var cannot_sub_event = []
-                var skip_sub_event
-                function permute(arr,delay,memo) {
-
-                
-                    //init cur set memo to empty array if null
-                    //only occurs in the first time not on reoccurences 
-                    var cur, memo = memo || [];
-                
-                    //same as for loop in the order room function
-                    //just rotates the current pivot through the array 
-                    for (var i = 0; i < arr.length; i++) {
-                    
-                        if (memo.length > skip_sub_event) {
-                            i = arr.length
-                        }else{
-                        
-                        skip_sub_event = undefined
-                        //take off first element in array
-                        cur = arr.splice(i, 1);
-    
-                        //occurs when perm is found as it will be 8 layers in 
-                        if (arr.length === 0) {
-    
-                            //inner try except so it can throw to parent function 
-                            try {
-    
-                                //the order is the current permutation 
-                                const order = memo.concat(cur)
-                                const return_event = []
-    
-                               
-    
-                                //gives an array of all the start times in this permutations 
-                                const start_times = order.map((event,event_index) => {return (order.slice(0,event_index).reduce((t,v) => {return t+v.time},0))+delay})
-                                
-                                //check if the event has already been checked at the given start times
-                                const already_been_checked = cannot_sub_event.filter((v) => {
-    
-                                    //returns truw if already been checked 
-                                    return (start_times.every((time) => {return time !== v.start_time}))
-                                })
-    
-                                if (already_been_checked.length>0){
-                                    //throw if need to skip perm 
-                                    throw('skip')
-                                }
-                                
-                                for (const [sub_event_index,sub_event] of order.entries()) {
-                                    
-                                    //for each event in this permutation 
-                                    //gives start time of this event based on times of previous events 
-                                    const start_time = sub_event_index*5+delay
-                                
-                                    //returns an array of sorted entries if possible 
-                                    //if not possible returns undefined
-                                    const ordered_event = orderEvent(sub_event.slice(),start_time,user_list)
-    
-                                    //if order of entries was found
-                                    if (ordered_event) {   
-                                        //add event to the room 
-                                        return_event.push(ordered_event)
-    
-                                        //if all rooms are add throw room object out of loop 
-                                        if (return_event.length === order.length) {
-                                            cannot_sub_event  = []
-                                            throw({return_event});                                       
-                                        }                   
-                                    }else{
-                                        //if event wasnt ordered add to couldnt event array
-                                        //along with the start time of that event 
-                                        skip_sub_event = sub_event_index 
-                                        cannot_sub_event.push({sub_event,start_time})
-                                        throw('skip')
-                                    }
-                                    
-                                } 
-                                
-                            } catch (event_data) {
-                                //catchs skips and room data
-                                if (event_data !== 'skip') {
-                                    //if room data thrown throw it to outer catch 
-                                    throw(event_data)
-                                }
-                                //if skipped continue with next perm 
-                            }
-                            
-                            
-                        }
-                        
-                        //permute the next layer down 
-                        permute(arr.slice(),delay, memo.concat(cur));
-    
-                        //push pivot entry back in with others in opposite direction 
-                        arr.splice(i, 0, cur[0]);
-                    }
-                    }
-                }
-    
-                //outer try except so it can break out of permute function 
-                try{
-                    
-                        permute(entry_chunks.reverse(),start_time)
-                    
-                    
-                    //starts the permute function with list of entries and the event start time 
-                    
-    
-                    //reset cannot play array if no permutations were found 
-                    //the event will be in a different position next time 
-                    cannot_sub_event = []
-    
-                }catch(err){
-                    //if event is thrown out of permute
-                    //then event has been ordered succesfully 
-                    //returns sorted event to the room sort function
-                    return {return_event:err.return_event.flatMap((obj) => {return obj.return_event}),time:err.return_event.reduce((t,v) => {return t + v.time},0)+5}
-                }
-
-
-                
-            }else{
             //function creating permutations of the entries in an event
             function permute(arr,start_time, memo) {
 
@@ -219,6 +182,7 @@ function create_schedule(comp,entries){
                 for (var i = 0; i < arr.length; i++) {
                    
                     //check if failed index is above or below this
+                    console.log(memo.map((entry) => {return entry.userID}));
                     if (memo.length > skip) {
                         //if index is above skip through perms by setting i to >= arr.length 
                         i = arr.length
@@ -230,6 +194,7 @@ function create_schedule(comp,entries){
                     skip = undefined
                     //take off the first element of the array 
                     cur = arr.splice(i, 1);
+                    //console.log(arr.length,memo.length);
 
                     //if it took off the last element then a permutation has been found 
                     if (arr.length === 0) {
@@ -241,6 +206,7 @@ function create_schedule(comp,entries){
                         try {
                             //order is given by the permutation 
                             const order = memo.concat(cur)
+                            console.log(order.length);
                             //checks if any user is at a time that has already been checked 
                             const already_been_checked = cannot_play.filter((v) => {
 
@@ -249,9 +215,7 @@ function create_schedule(comp,entries){
                             })
 
                             if (already_been_checked.length>0){
-                                //break try catch if perm wont work
-                                
-                                skip = already_been_checked[0].perm_index
+                                //break try catch if perm wont work 
                                 throw('skip')
                             }
                         
@@ -290,6 +254,7 @@ function create_schedule(comp,entries){
                                             //if the user cant play add it to the cannot play array with the index
                                             //skip the remainder of the perm as it already cant occur 
                                             skip = entry_index
+                                            console.log(skip+'skip');
                                             cannot_play.push({userID:user.userID,perm_index:entry_index})
                                             throw('skip')
                                         }
@@ -328,12 +293,9 @@ function create_schedule(comp,entries){
 
             //outer try except so it can break out of permute function 
             try{
-                
-                    permute(entries.reverse(),start_time)
-                
-                
+
                 //starts the permute function with list of entries and the event start time 
-                
+                permute(entries.reverse(),start_time)
 
                 //reset cannot play array if no permutations were found 
                 //the event will be in a different position next time 
@@ -347,8 +309,9 @@ function create_schedule(comp,entries){
             }
             
         }
-        }
+    
         function orderRoom(room,user_list,max_time){
+
 
             //cannot event function 
             //same as cannot play 
@@ -461,6 +424,7 @@ function create_schedule(comp,entries){
             
             //returns finish time of the room
             const finish_time = room.reduce((t,v) => {return t+v.time},0)
+            //console.log(finish_time);
             //calculates any float time avalible for non critical rooms 
             const float_time = max_time-finish_time
             var delay = 0
@@ -479,6 +443,7 @@ function create_schedule(comp,entries){
 
                     //add to delay if no possible perm is found 
                     delay+=5
+                    console.log('delay is '+delay);
                 }
                 
                   
@@ -487,6 +452,7 @@ function create_schedule(comp,entries){
                 
                 //for each event in the room 
                 for (const [eventi,event] of err.return_room.entries()) {
+                    console.log(event);
                     //for each entry in each event 
                     event.return_event.forEach((entry) => {    
 
@@ -517,9 +483,11 @@ function create_schedule(comp,entries){
 
             //orders the room 
             const ordered_room = orderRoom(room,user_list,max_time)
+            //console.log(ordered_room);
             return ordered_room
             
         })
+        //console.log(result);
         return(result)
 
 
@@ -548,6 +516,7 @@ function create_schedule(comp,entries){
     //find critical order
     const critical_order = find_critical_order(all_events,comp_rooms.length)
     console.log(critical_order);
+    //critical_order.map((room,roomindex) => {room.map((event,eventindex) => {console.log(roomindex,eventindex,event.event_entries.length);})})
     //create schdule
     const schedule = sort_users(entries,critical_order)
 
@@ -559,4 +528,4 @@ function create_schedule(comp,entries){
     return schedule
 }
 
-module.exports = create_schedule;
+create_schedule(comp,entries);
