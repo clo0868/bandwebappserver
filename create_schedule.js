@@ -65,7 +65,7 @@ function create_schedule(comp,entries){
     
             return user.play_times.map((user_play_time) =>{ 
                 //check if given play time is within 5 minutes of another playing time of theirs
-                return (play_time <= (user_play_time - 10)|| play_time >= (user_play_time + 10))
+                return (play_time <= (user_play_time - 15)|| play_time >= (user_play_time + 15))
     
                 //if any values return false user cannot play at that time 
             }).every((value) => (value === true))
