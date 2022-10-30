@@ -113,14 +113,25 @@ function create_schedule(comp,entries){
                                 const return_event = []
     
                                
-    
+                                console.log(order.length);
                                 //gives an array of all the start times in this permutations 
-                                const start_times = order.map((event,event_index) => {return (order.slice(0,event_index).reduce((t,v) => {return t+v.time},0))+delay})
+                                const event_lengths = order.map((event,event_index) => {
+                                    return event.length
+                                })
+                                event_lengths.unshift(0)
+                                const start_times = event_lengths.map((length,length_index) => {
+                                    return event_lengths.slice(0,length_index+1).reduce((t,v) => {
+                                        return t + 5*v
+                                    })+delay
+                                })
                                 
+                                console.log(start_times);
+
+
                                 //check if the event has already been checked at the given start times
                                 const already_been_checked = cannot_sub_event.filter((v) => {
     
-                                    //returns truw if already been checked 
+                                    //returns true if already been checked 
                                     return (start_times.every((time) => {return time !== v.start_time}))
                                 })
     
@@ -133,7 +144,9 @@ function create_schedule(comp,entries){
                                     
                                     //for each event in this permutation 
                                     //gives start time of this event based on times of previous events 
-                                    const start_time = sub_event_index*5+delay
+                                    const start_time = event_lengths.slice(0,sub_event_index+1).reduce((t,v) => {
+                                        return t + 5*v
+                                    })+delay
                                 
                                     //returns an array of sorted entries if possible 
                                     //if not possible returns undefined
@@ -194,6 +207,7 @@ function create_schedule(comp,entries){
                     cannot_sub_event = []
     
                 }catch(err){
+                    console.log(err);
                     //if event is thrown out of permute
                     //then event has been ordered succesfully 
                     //returns sorted event to the room sort function
@@ -349,6 +363,7 @@ function create_schedule(comp,entries){
         }
         }
         function orderRoom(room,user_list,max_time){
+            console.log(room);
 
             //cannot event function 
             //same as cannot play 
@@ -484,7 +499,7 @@ function create_schedule(comp,entries){
                   
             }catch(err){
                 //on throw catch the room object 
-                
+                console.log(err);
                 //for each event in the room 
                 for (const [eventi,event] of err.return_room.entries()) {
                     //for each entry in each event 
